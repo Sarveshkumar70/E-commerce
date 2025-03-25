@@ -12,9 +12,9 @@ export default function Card(props) {
   // finding if whislist item already exists in whistCart 
   const whislistIcon = whislist.some((item)=>(item.id === id))
 
-  // 
+  // adding and removing from whislist
   const handleWhislist = () => {
-    if (whislist.length) {
+    if (whislistIcon) {
       removeFromWhisList(id)
       return
     }
