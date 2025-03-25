@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-500: #131921;
+  --color-secondary-200: rgb(241, 242, 244, 1);
+  
+}
+
+/* hidden slider btns. */
+.slick-prev {
+  display: none !important;
+}
+.slick-next {
+  display: none !important;
+}
+
+.slick-next:before {
+  display: none !important;
+}
+.slick-prev:before {
+  display: none !important;
+}
+
+/* fro hiding scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
