@@ -92,7 +92,7 @@ function CartComponent() {
 
       {/* Order Summary */}
       <div className="flex justify-end px-6 pt-10" >
-      <OrderSummary/>
+      <OrderSummary />
       </div>
    
 
