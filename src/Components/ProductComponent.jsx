@@ -10,24 +10,26 @@ export default function ProductComponent() {
 
   // fetching data on first render
   useEffect(()=>{
-    fetchData()    
+    if (!localStorage.getItem("fetchedData")) {
+      fetchData()    
+    }
   },[])
 
   // fetching data from url
   async function fetchData() {
     const url = "https://fakestoreapi.com/products";
     try {
-      
       const data = await fetch(url);
       if (!data.ok) {
         throw new Error(`Error status : ${data.status}`)
       }
       const formatData = await data.json()
       setUrlData(formatData)
+      localStorage.setItem("fetchedData",JSON.stringify(formatData))
     } catch (error) {
       console.error(error.message)
     }
-  }
+  }  
   
   return (
     <>

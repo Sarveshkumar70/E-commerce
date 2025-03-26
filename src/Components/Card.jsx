@@ -26,7 +26,7 @@ export default function Card(props) {
   return (
     <>
       <div
-        className="w-[84%]  sm:w-[75%]  lg:w-[85%] h-[85%] mt-5 py-8 flex justify-center items-center flex-col gap-2 rounded-2xl  
+        className="w-[80%]  sm:w-[75%]  lg:w-[85%] h-[85%] mt-5 py-8 flex justify-center items-center flex-col gap-2 rounded-2xl  
         hover:shadow-md bg-gray-200 hover:shadow-blue-900 mx-auto transition-all duration-300
         relative"
       >
@@ -35,13 +35,12 @@ export default function Card(props) {
           <img
             src={image}
             className="object-contain w-full h-full rounded-full"
-            alt=""
-          />
+            alt=""/>
         </div>
 
         {/* whislist icon */}
         <span
-          className="absolute top-6 right-6 hover:scale-115 bg-white p-1 rounded-full hover:cursor-pointer"
+          className="absolute top-7 right-6 hover:scale-115 bg-white p-1 rounded-full hover:cursor-pointer"
           onClick={()=>handleWhislist()}>
           <FaHeart color={whislistIcon?"red":"black"} />
         </span>

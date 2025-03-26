@@ -36,11 +36,9 @@ function RecommendationInCart() {
     console.log("Shuffled:",shuffledProducts);
     // selects first 4 objects from array
     setRandomCollection(shuffledProducts?.slice(0,4))
-      // console.log("Selected:",randomCollection);
+      console.log("Selected:",randomCollection);
     }, [data])
     
-
-
 
   return (
     <>

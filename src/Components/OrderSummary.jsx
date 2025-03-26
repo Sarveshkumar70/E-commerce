@@ -1,10 +1,14 @@
 import React from 'react'
 import { useCart } from './CartContextComponent'
+import {useNavigate} from 'react-router-dom'
 
 function OrderSummary() {
+
+  const navigate = useNavigate()
+
+  // using context
   const {cart} = useCart()
   
-
   // calculating total priceValue in cart
   const totalValue = cart.reduce((accumulator,currentVal)=>(
     accumulator+= currentVal.Qty*Math.floor(currentVal.price)
@@ -22,7 +26,11 @@ function OrderSummary() {
 
   // total in ending
   const total = orderDetailData.reduce((acc,curVal)=>(acc+=curVal.Value),0)
-    
+
+  // const handleClick = ()=>{
+  //   navigate('/')
+  // } 
+
   return (
     <>
        <div className=" flex flex-col gap-4 w-[400px] shadow-md" >
@@ -42,7 +50,9 @@ function OrderSummary() {
         <span className='font-semibold text-2xl text-purple-600'>${total}</span>
         </div>
         <div className='text-center' >
-        <button className='bg-blue-500 w-[40%]  rounded-[8px] py-2 text-white hover:bg-blue-600 mb-5' >Proceed to checkout</button>
+        <button className='bg-blue-500 w-[50%]  rounded-[8px] py-3 px-2 cursor-pointer text-white hover:bg-blue-600 mb-5'
+        onClick={()=>handleClick}
+         >Proceed to checkout</button>
         </div>
       </div>
     </>
