@@ -1,27 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { createContext } from 'react'
+import React, { useContext, useEffect, useState } from "react";
+import { createContext } from "react";
 
-let ProductContextIs = createContext(null)
+let ProductContextIs = createContext(null);
 
-function ProductContext({children}) {
-     
-    const [urlData,setUrlData]=useState()
+function ProductContext({ children }) {
+  const [urlData, setUrlData] = useState();
 
-    useEffect(() => {
-      const storedData= localStorage.getItem("fetchedData")
-      // checking id storedData exists
-      if (storedData) {
-        setUrlData(JSON.parse(storedData))
-      }
-    }, [])
-    
+  useEffect(() => {
+    const storedData = localStorage.getItem("fetchedData");
+    // checking id storedData exists
+    if (storedData) {
+      setUrlData(JSON.parse(storedData));
+    }
+  }, []);
+
   return (
     <>
-    <ProductContextIs.Provider value={{urlData,setUrlData}}>
+      <ProductContextIs.Provider value={{ urlData, setUrlData }}>
         {children}
-    </ProductContextIs.Provider>
+      </ProductContextIs.Provider>
     </>
-  )
+  );
 }
-export default ProductContext
-export const useProduct = ()=> useContext(ProductContextIs)
+export default ProductContext;
+export const useProduct = () => useContext(ProductContextIs);

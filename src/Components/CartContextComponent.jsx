@@ -14,7 +14,6 @@ export default function CartContextComponent({ children }) {
     localStorage.setItem("cartData", JSON.stringify(cart));
   }, [cart]);
 
-
   // fn for add to cart functionality
   function addToCart(product) {
     toast.success("Product added to Cart");
@@ -48,7 +47,6 @@ export default function CartContextComponent({ children }) {
       )
     );
   }
-
 
   // same functionality for whislist
   const [whislist, setWhislist] = useState(
