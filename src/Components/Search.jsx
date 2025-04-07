@@ -10,21 +10,26 @@ function Search() {
 
   const { urlData } = useProduct();
 
+
+
+  
+
+
   // handling search
   const handleSearch = (e) => {
     e.preventDefault();
-    
-    const trimmedInput = inputVal.trim()
+
+    const trimmedInput = inputVal.trim();
     if (trimmedInput === "") {
-        toast.error("Please Enter some value")
-        return;
+      toast.error("Please Enter some value");
+      return;
     }
     // returning array of searched items by mtching with searched input
     let newData = urlData.filter((data) =>
       data.title.toLowerCase().includes(trimmedInput.toLowerCase())
     );
     if (newData.length > 0) {
-    //   console.log("filtered data", newData);
+      //   console.log("filtered data", newData);
       navigate("/SearchProducts", { state: { filterData: newData } });
     } else {
       toast.error("No Such Data!");

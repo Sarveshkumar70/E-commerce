@@ -2,25 +2,33 @@ import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useCart } from "./CartContextComponent";
 import WordSplit from "./WordSplit";
+import { useNavigate } from "react-router-dom";
 
 export default function Card(props) {
+  // for navigation
+  const navigate = useNavigate();
+
   const { id, title, price, image } = props.item;
 
   // using context
-  const { addToCart, addToWhislist,whislist,removeFromWhisList } = useCart();
+  const { addToCart, addToWhislist, whislist, removeFromWhisList } = useCart();
 
-  // finding if whislist item already exists in whistCart 
-  const whislistIcon = whislist.some((item)=>(item.id === id))
+  // finding if whislist item already exists in whistCart
+  const whislistIcon = whislist.some((item) => item.id === id);
 
   // adding and removing from whislist
   const handleWhislist = () => {
     if (whislistIcon) {
-      removeFromWhisList(id)
-      return
-    }
-    else{
+      removeFromWhisList(id);
+      return;
+    } else {
       addToWhislist({ id, title, price, image, Qty: 1 });
     }
+  };
+
+  // navigate to product detail page
+  const handleProductDetail = () => {
+    navigate("/productDetail");
   };
 
   return (
@@ -35,22 +43,28 @@ export default function Card(props) {
           <img
             src={image}
             className="object-contain w-full h-full rounded-full"
-            alt=""/>
+            alt=""
+          />
         </div>
 
         {/* whislist icon */}
         <span
-          className="absolute top-7 right-6 hover:scale-115 bg-white p-1 rounded-full hover:cursor-pointer"
-          onClick={()=>handleWhislist()}>
-          <FaHeart color={whislistIcon?"red":"black"} />
+          className="absolute  flex justify-center items-center top-7 right-6 hover:scale-115 bg-white px-1 py-1 rounded-full hover:cursor-pointer"
+          onClick={() => handleWhislist()}
+        >
+          <FaHeart color={whislistIcon ? "red" : "black"} />
         </span>
 
         {/* text div */}
         <div className="w-[95%] flex justify-center items-center flex-col gap-2">
-          <h4 className="text-sm sm:text-lg font-mono text-center ">
+          <h4
+            className="text-sm sm:text-lg font-mono text-center hover:text-red-500 hover:cursor-pointer"
+            onClick={handleProductDetail}
+          >
             <WordSplit title={title} />
           </h4>
-          <div className="flex justify-between">
+          {/* Price */}
+          <div className=" flex justify-between">
             <div className="text-lg font-bold">
               {`$ ${price.toFixed(0)}`}{" "}
               <span className="line-through text-sm font-semibold text-gray-600">

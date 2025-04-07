@@ -19,7 +19,7 @@ export default function Navbar() {
   const { cart, whislist } = useCart();
 
   return (
-    <nav className="bg-[#131921] p-4 shadow-lg ">
+    <nav className="bg-[#131921] p-4 shadow-lg fixed z-50 w-[100%] border ">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-[12px] sm:text-2xl font-bold text-white">
@@ -28,7 +28,7 @@ export default function Navbar() {
 
         {/* Search Bar (Hidden on small screens) */}
         <div className="hidden md:flex items-center bg-white rounded-full overflow-hidden shadow-sm">
-        <Search/>
+          <Search />
         </div>
 
         {/* Icons & Dropdown */}
@@ -69,7 +69,6 @@ export default function Navbar() {
                   Sign in your account
                 </Link>
 
-                
                 <Link
                   to={"/SignUp"}
                   className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
