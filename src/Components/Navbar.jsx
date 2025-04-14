@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   ShoppingCartIcon,
   HeartIcon,
@@ -12,11 +12,27 @@ import { useCart } from "./CartContextComponent";
 import Search from "./Search";
 
 export default function Navbar() {
+  const refClick = useRef();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // using context data for showing whislist and cart item count
   const { cart, whislist } = useCart();
+
+  const handleClickOn = (e) => {
+    if (refClick.current && !refClick.current.contains(e.target)) {
+      setDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("mousedown", handleClickOn);
+
+    return () => {
+      document.body.removeEventListener('mousedown',handleClickOn);
+    };
+  }, []);
 
   return (
     <nav className="bg-[#131921] p-4 shadow-lg fixed z-50 w-[100%] border ">
@@ -55,9 +71,8 @@ export default function Navbar() {
           </Link>
 
           {/* User Dropdown */}
-          <div>
-            <button onClick={() => setDropdownOpen(!dropdownOpen)}
-              onBlur={()=>setDropdownOpen(false)}>
+          <div ref={refClick}>
+            <button onClick={() => setDropdownOpen(prev=>!prev)}>
               <UserIcon className="w-10 h-7 text-gray-300 hover:text-blue-400 cursor-pointer transition" />
             </button>
 
