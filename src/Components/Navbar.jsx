@@ -55,8 +55,9 @@ export default function Navbar() {
           </Link>
 
           {/* User Dropdown */}
-          <div className="relative">
-            <button onClick={() => setDropdownOpen(!dropdownOpen)}>
+          <div>
+            <button onClick={() => setDropdownOpen(!dropdownOpen)}
+              onBlur={()=>setDropdownOpen(false)}>
               <UserIcon className="w-10 h-7 text-gray-300 hover:text-blue-400 cursor-pointer transition" />
             </button>
 
